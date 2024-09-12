@@ -27,7 +27,7 @@ This project is a RESTful API for creating and managing tasks. It includes vario
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/task-management-api.git
+    git clone https://github.com/sriramguptathallada/-Brilyant.git
     ```
     ```
 2. Install the dependencies:

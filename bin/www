@@ -1,0 +1,59 @@
+const app = require('../app')
+const http = require('http')
+
+require('dotenv').config()
+
+
+const normalizePort = val => {
+  // Attempt to parse the input value as an integer with base 10.
+  let port = parseInt(val, 10);
+
+  // Check if the parsed value is NaN (Not-a-Number).
+  if (isNaN(port)) {
+    // The value is not a number, assume it is a named pipe or non-numeric identifier.
+    return val;
+  }
+
+  // Check if the parsed value is a valid non-negative number.
+  if (port >= 0) {
+    // The value is a valid port number.
+    return port;
+  }
+
+  // The parsed value is a negative number, which is not a valid port number.
+  return false;
+};
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(process.env.PORT || '80')
+app.set('port', port)
+
+/**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app)
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, () => {
+  console.log('Server listening on port ' + port)
+})
+
+server.on('error', (error) => {
+  console.error('Server error:', error);
+  // Handle the error here
+});
+
+server.on('listening', () => {
+  console.log('Server is listening');
+  // Handle the listening event here
+});
+
+
+module.exports = server
